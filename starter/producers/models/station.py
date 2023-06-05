@@ -9,8 +9,6 @@ from models.producer import Producer
 
 logger = logging.getLogger(__name__)
 
-TOPIC_NAME = "org.chicago.cta.station.arrivals"
-
 
 class Station(Producer):
     """Defines a single station"""
@@ -21,7 +19,14 @@ class Station(Producer):
 
     def __init__(self, station_id, name, color, direction_a=None, direction_b=None):
         self.name = name
-        self.topic_name = TOPIC_NAME
+        station_name = (
+            self.name.lower()
+            .replace("/", "_and_")
+            .replace(" ", "_")
+            .replace("-", "_")
+            .replace("'", "")
+        )
+        self.topic_name = f"org.chicago.cta.{station-name}.arrival"
         super().__init__(
             self.topic_name,
             key_schema=Station.key_schema,

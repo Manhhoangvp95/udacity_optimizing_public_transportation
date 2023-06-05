@@ -36,7 +36,7 @@ class KafkaConsumer:
 
         self.broker_properties = {
             BOOTSTRAP_SERVERS: KAFKA_BOOTSTRAP_SERVERS,
-            'auto.offset.reset': 'earliest',
+            'auto.offset.reset': "earliest" if offset_earliest else "latest",
             'group.id': 'station-consumer-group-1',
         }
 
