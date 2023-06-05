@@ -9,7 +9,7 @@ from models.turnstile_hardware import TurnstileHardware
 
 logger = logging.getLogger(__name__)
 
-TOPIC_NAME = "org.chicago.cta.station.turnstile.v1"
+TOPIC_NAME = "org.chicago.cta.stations.turnstile.v1"
 
 
 class Turnstile(Producer):
